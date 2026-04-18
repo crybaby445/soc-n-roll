@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+import csv
 import json
 import sys
 import xml.etree.ElementTree as ET
@@ -58,6 +59,11 @@ def main():
     parser.add_argument("--integrity", choices=["high", "medium", "low", "system"],
                         type=str.lower, help="Filter: IntegrityLevel exact match")
     parser.add_argument("--cmdline", help="Filter: CommandLine contains value (case-insensitive)")
+    parser.add_argument("--format", choices=["json", "jsonl", "csv"], default="json",
+                        help="Output format (default: json)")
+    # This stats feature is for quick triage to understand what's in a file before deep analysis
+    parser.add_argument("--stats", action="store_true",
+                        help="Output statistics instead of events")
     args = parser.parse_args()
 
     try:
@@ -89,8 +95,32 @@ def main():
         print("Error: no events matched filters", file=sys.stderr)
         sys.exit(1)
 
-    output = results[0] if len(results) == 1 else results
-    print(json.dumps(output, indent=2))
+    if args.stats:
+        by_integrity: dict = {}
+        for r in results:
+            level = r.get("IntegrityLevel") or "Unknown"
+            by_integrity[level] = by_integrity.get(level, 0) + 1
+        stats = {
+            "total_events": len(results),
+            "unique_processes": len({r.get("Image") for r in results}),
+            "unique_users": len({r.get("User") for r in results}),
+            "events_by_integrity_level": by_integrity,
+        }
+        print(json.dumps(stats, indent=2))
+        return
+
+    if args.format == "jsonl":
+        for r in results:
+            print(json.dumps(r))
+    elif args.format == "csv":
+        # Collect all keys in a stable, consistent order across records
+        fieldnames = list(dict.fromkeys(k for r in results for k in r))
+        writer = csv.DictWriter(sys.stdout, fieldnames=fieldnames, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(results)
+    else:
+        output = results[0] if len(results) == 1 else results
+        print(json.dumps(output, indent=2))
 
 
 if __name__ == "__main__":
